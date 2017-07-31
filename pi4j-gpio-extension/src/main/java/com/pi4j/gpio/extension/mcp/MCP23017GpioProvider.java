@@ -1,13 +1,6 @@
 package com.pi4j.gpio.extension.mcp;
 
-import java.io.IOException;
-
-import com.pi4j.io.gpio.GpioProvider;
-import com.pi4j.io.gpio.GpioProviderBase;
-import com.pi4j.io.gpio.Pin;
-import com.pi4j.io.gpio.PinMode;
-import com.pi4j.io.gpio.PinPullResistance;
-import com.pi4j.io.gpio.PinState;
+import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.event.PinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.PinListener;
 import com.pi4j.io.gpio.exception.InvalidPinException;
@@ -16,6 +9,8 @@ import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
+
+import java.io.IOException;
 
 /*
  * #%L
@@ -249,6 +244,21 @@ public class MCP23017GpioProvider extends GpioProviderBase implements GpioProvid
     @Override
     public PinMode getMode(Pin pin) {
         return super.getMode(pin);
+    }
+
+    public void setState(short state) throws IOException {
+        byte[] buffer = new byte[2];
+        buffer[0] = (byte) (state & 0xFF);
+        buffer[1] = (byte) ((state >> 8) & 0xFF);
+        device.write(REGISTER_GPIO_A, buffer);
+    }
+
+    public short getState() throws IOException {
+        short state = 0;
+        byte[] buffer = new byte[2];
+        if (device.read(REGISTER_GPIO_A, buffer, 0, buffer.length) > 0)
+            state = (short) ((buffer[1] << 8) + (buffer[0] & 0xff));
+        return state;
     }
 
     @Override
