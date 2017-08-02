@@ -63,7 +63,7 @@ public class MCP23008Pin {
     public static final Pin GPIO_06 = createDigitalPin(64, "GPIO 6");
     public static final Pin GPIO_07 = createDigitalPin(128, "GPIO 7");
 
-    public static Pin[] ALL = { MCP23008Pin.GPIO_00, MCP23008Pin.GPIO_01, MCP23008Pin.GPIO_02, MCP23008Pin.GPIO_03,
+    public static final Pin[] ALL = { MCP23008Pin.GPIO_00, MCP23008Pin.GPIO_01, MCP23008Pin.GPIO_02, MCP23008Pin.GPIO_03,
                                 MCP23008Pin.GPIO_04, MCP23008Pin.GPIO_05, MCP23008Pin.GPIO_06, MCP23008Pin.GPIO_07 };
 
     private static Pin createDigitalPin(int address, String name) {
