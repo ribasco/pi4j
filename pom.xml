@@ -145,7 +145,7 @@
         <!-- DEFAULT Pi4J BUILD PROPERTIES FOR THE 'BananaPi' PLATFORM -->
         <bananapi.build>false</bananapi.build>
         <bananapi.platform>bananapi</bananapi.platform>
-        <bananapi.name>BananaPi</bananapi.name>
+        <bananapi.name>LeMaker BananaPi</bananapi.name>
         <bananapi.host>${pi4j.default.host}</bananapi.host>
         <bananapi.port>${pi4j.default.port}</bananapi.port>
         <bananapi.user>${pi4j.default.user}</bananapi.user>
@@ -155,12 +155,22 @@
         <!-- DEFAULT Pi4J BUILD PROPERTIES FOR THE 'BananaPro' PLATFORM -->
         <bananapro.build>false</bananapro.build>
         <bananapro.platform>bananapro</bananapro.platform>
-        <bananapro.name>BananaPro</bananapro.name>
+        <bananapro.name>LeMaker BananaPro</bananapro.name>
         <bananapro.host>${pi4j.default.host}</bananapro.host>
         <bananapro.port>${pi4j.default.port}</bananapro.port>
         <bananapro.user>${pi4j.default.user}</bananapro.user>
         <bananapro.password>${pi4j.default.password}</bananapro.password>
         <bananapro.directory>${pi4j.default.directory}</bananapro.directory>
+
+        <!-- DEFAULT Pi4J BUILD PROPERTIES FOR THE 'SINOVOIP-BPI' PLATFORM -->
+        <bpi.build>false</bpi.build>
+        <bpi.platform>bpi</bpi.platform>
+        <bpi.name>Sinovoip BananaPi</bpi.name>
+        <bpi.host>${pi4j.default.host}</bpi.host>
+        <bpi.port>${pi4j.default.port}</bpi.port>
+        <bpi.user>${pi4j.default.user}</bpi.user>
+        <bpi.password>${pi4j.default.password}</bpi.password>
+        <bpi.directory>${pi4j.default.directory}</bpi.directory>
 
         <!-- DEFAULT Pi4J BUILD PROPERTIES FOR THE 'OrangePi' PLATFORM -->
         <orangepi.build>false</orangepi.build>
@@ -171,6 +181,16 @@
         <orangepi.user>${pi4j.default.user}</orangepi.user>
         <orangepi.password>${pi4j.default.password}</orangepi.password>
         <orangepi.directory>${pi4j.default.directory}</orangepi.directory>
+
+        <!-- DEFAULT Pi4J BUILD PROPERTIES FOR THE 'NanoPi' PLATFORM -->
+        <nanopi.build>false</nanopi.build>
+        <nanopi.platform>nanopi</nanopi.platform>
+        <nanopi.name>NanoPi</nanopi.name>
+        <nanopi.host>${pi4j.default.host}</nanopi.host>
+        <nanopi.port>${pi4j.default.port}</nanopi.port>
+        <nanopi.user>${pi4j.default.user}</nanopi.user>
+        <nanopi.password>${pi4j.default.password}</nanopi.password>
+        <nanopi.directory>${pi4j.default.directory}</nanopi.directory>
 
         <!-- PROJECT ENCODING PROPERTIES -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -304,6 +324,7 @@
                 <bananapro.build>true</bananapro.build>
                 <odroid.build>true</odroid.build>
                 <orangepi.build>true</orangepi.build>
+                <bpi.build>true</bpi.build>
             </properties>
 		</profile>
 
@@ -477,6 +498,22 @@
             </modules>
         </profile>
 
+        <!-- SPECIAL PROFILE TO INCLUDE SINOVOIP-BPI PLATFORM -->
+        <profile>
+            <id>bpi</id>
+            <activation>
+                <property>
+                    <name>release-build</name>
+                </property>
+            </activation>
+            <properties>
+                <bpi.build>true</bpi.build>
+            </properties>
+            <modules>
+                <module>pi4j-native</module>
+            </modules>
+        </profile>
+
         <!-- SPECIAL PROFILE TO INCLUDE ORANGEPI PLATFORM -->
         <profile>
             <id>orangepi</id>
@@ -493,7 +530,23 @@
             </modules>
         </profile>
 
-	</profiles>
+        <!-- SPECIAL PROFILE TO INCLUDE NANOPI PLATFORM -->
+        <profile>
+            <id>nanopi</id>
+            <activation>
+                <property>
+                    <name>release-build</name>
+                </property>
+            </activation>
+            <properties>
+                <nanopi.build>true</nanopi.build>
+            </properties>
+            <modules>
+                <module>pi4j-native</module>
+            </modules>
+        </profile>
+
+    </profiles>
 
 	<!-- BUILD INSTRUCTIONS -->
 	<build>

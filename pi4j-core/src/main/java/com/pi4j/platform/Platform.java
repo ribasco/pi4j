@@ -49,8 +49,10 @@ public enum Platform {
     RASPBERRYPI("raspberrypi", "Raspberry Pi"),
     BANANAPI("bananapi", "BananaPi"),
     BANANAPRO("bananapro", "BananaPro"),
+    BPI("bpi", "Synovoip BPI"),
     ODROID("odroid", "Odroid"),
-    ORANGEPI("orangepi", "OrangePi");
+    ORANGEPI("orangepi", "OrangePi"),
+    NANOPI("nanopi", "NanoPi");
 
     // private variables
     protected String platformId = null;
@@ -127,11 +129,17 @@ public enum Platform {
             case BANANAPRO: {
                 return new BananaProGpioProvider();
             }
+            case BPI: {
+                return new BpiGpioProvider();
+            }
             case ODROID: {
                 return new OdroidGpioProvider();
             }
             case ORANGEPI: {
                 return new OrangePiGpioProvider();
+            }
+            case NANOPI: {
+                return new NanoPiGpioProvider();
             }
             default: {
                 // if a platform cannot be determine, then assume it's the default RaspberryPi
@@ -164,11 +172,17 @@ public enum Platform {
             case BANANAPRO: {
                 return new BananaProSystemInfoProvider();
             }
+            case BPI: {
+                return new BpiSystemInfoProvider();
+            }
             case ODROID: {
                 return new OdroidSystemInfoProvider();
             }
             case ORANGEPI: {
                 return new OrangePiSystemInfoProvider();
+            }
+            case NANOPI: {
+                return new NanoPiSystemInfoProvider();
             }
             default: {
                 // if a platform cannot be determine, then assume it's the default RaspberryPi
