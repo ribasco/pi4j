@@ -508,26 +508,13 @@ JNIEXPORT void JNICALL Java_com_pi4j_jni_Serial_sendBreak
 JNIEXPORT void JNICALL Java_com_pi4j_jni_Serial_setBreak
   (JNIEnv *env, jclass obj, jint fd, jboolean enabled)
 {
-  if(enabled == JNI_FALSE)
-  {
-     printf("SERIAL SET BREAK - FALSE\n");
-     if(ioctl(fd, TIOCCBRK, NULL) == 0)
-     {
-        printf("SERIAL SET BREAK - SUCCESS\n");
-        return;
-     }
+  if(enabled == JNI_FALSE){
+     if(ioctl(fd, TIOCCBRK, NULL) == 0) return;
   }
-  else
-  {
-     printf("SERIAL SET BREAK - TRUE\n");
-     if(ioctl(fd, TIOCSBRK, NULL) == 0)
-     {
-        printf("SERIAL SET BREAK - SUCCESS\n");
-        return;
-     }
+  else{
+     if(ioctl(fd, TIOCSBRK, NULL) == 0) return;
   }
 
-  printf("SERIAL SET BREAK - ERROR\n");
   // raise IOException if failed
   int err_number = errno;
   char err_message[100];

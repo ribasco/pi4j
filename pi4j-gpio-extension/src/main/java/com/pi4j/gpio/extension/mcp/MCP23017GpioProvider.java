@@ -479,7 +479,7 @@ public class MCP23017GpioProvider extends GpioProviderBase implements GpioProvid
 
 	                            // loop over the available pins on port B
 	                            for (Pin pin : MCP23017Pin.ALL_A_PINS) {
-	                                int pinAddressA = pin.getAddress() - GPIO_A_OFFSET;
+	                                //int pinAddressA = pin.getAddress() - GPIO_A_OFFSET;
 
 	                                // is there an interrupt flag on this pin?
 	                                //if ((pinInterruptA & pinAddressA) > 0) {
@@ -502,7 +502,7 @@ public class MCP23017GpioProvider extends GpioProviderBase implements GpioProvid
 
 	                            // loop over the available pins on port B
 	                            for (Pin pin : MCP23017Pin.ALL_B_PINS) {
-	                                int pinAddressB = pin.getAddress() - GPIO_B_OFFSET;
+	                                //int pinAddressB = pin.getAddress() - GPIO_B_OFFSET;
 
 	                                // is there an interrupt flag on this pin?
 	                                //if ((pinInterruptB & pinAddressB) > 0) {

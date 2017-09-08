@@ -63,7 +63,7 @@ Copyright (C) 2012-2017 Pi4J
 
 ## IN DEVELOPMENT
 
-2017-08-11 :: 1.2-SNAPSHOT
+2017-09-05 :: 1.2-SNAPSHOT
 
   *  Updated to Java 8 (enhancement #203) 
   *  Updated build dependencies/plugins to latest versions.
@@ -78,7 +78,12 @@ Copyright (C) 2012-2017 Pi4J
   *  Fixed #275; LCDExample.java doesn't work in release
   *  Fixed #276; RaspiBcmPin pins not firing pin state change events
   *  Fixed #198; Problems with data from HMC5883L class
-  *  Fixed #351; Pi4J packages excluded in OSGI manifest ImportPackage declaration 
+  *  Fixed #351; Pi4J packages excluded in OSGI manifest ImportPackage declaration
+  *  Fixed #360; Serial.setBreak(TRUE|FALSE) is printing debug lines to stdout
+  *  Fixed #355; ButtonBase Executor Service should be closed on GpioController.shutdown()
+  *  Fixed #356; SystemInfoProvider CPU temperature was divided by 1000 on OrangePi
+  *  Fixed #272; SerialDataEvent should not fire when event.length() == 0
+  *  Fixed #361; SerialFactory isShutdown() state not getting updated on new instance
 
 ## RELEASES
 

@@ -171,6 +171,9 @@ public class SerialImpl extends AbstractSerialDataReaderWriter implements Serial
             @Override
             public void onDataReceive(SerialInterruptEvent event) {
 
+                // ignore any event triggers that are missing data
+                if(event.getLength() <= 0) return;
+
                 try {
                     SerialDataEvent sde = null;
 
@@ -853,7 +856,8 @@ public class SerialImpl extends AbstractSerialDataReaderWriter implements Serial
         }
     }
 
-    private class SerialInputStream extends InputStream {
+    @SuppressWarnings("unused")
+	private class SerialInputStream extends InputStream {
 
         @Override
         public int read() throws IOException {
