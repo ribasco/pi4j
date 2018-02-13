@@ -52,7 +52,8 @@ public enum Platform {
     BPI("bpi", "Synovoip BPI"),
     ODROID("odroid", "Odroid"),
     ORANGEPI("orangepi", "OrangePi"),
-    NANOPI("nanopi", "NanoPi");
+    NANOPI("nanopi", "NanoPi"),
+    SIMULATED("simulated", "Simulated");
 
     // private variables
     protected String platformId = null;
@@ -140,6 +141,9 @@ public enum Platform {
             }
             case NANOPI: {
                 return new NanoPiGpioProvider();
+            }
+            case SIMULATED: {
+                return new SimulatedGpioProvider();
             }
             default: {
                 // if a platform cannot be determine, then assume it's the default RaspberryPi
